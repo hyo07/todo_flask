@@ -1,1 +1,1 @@
-web: gunicorn todo-flask:app
+web: gunicorn app:app
