@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn todo-flask:app –log-fil=-
