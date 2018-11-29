@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>タスク内容:</th>
+            <td>{{ todo["name"] }}</td>
+        </tr>
+        <tr>
+            <th>期日:</th>
+            <td>{{ todo["duedate"] }}</td>
+        </tr>
+        <tr>
+            <th>状態:</th>
+            <td>{{ todo["status"] }}</td>
+        </tr>
+        <tr>
+            <th>備考:</th>
+            <td>{{ todo["memo"] }}</td>
+        </tr>
+    </table>
+    <form method="get" action="/edit" >
+        <button type="edit">編集</button>
+    </form>
+</body>
+</html>

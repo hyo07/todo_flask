@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>このtodoを、ほんとうに削除しますか？</h1>
+    <table>
+        <tr>
+            <th>タスク内容:</th>
+            <td>{{ res["name"] }}</td>
+        </tr>
+        <tr>
+            <th>期日:</th>
+            <td>{{ res["duedate"] }}</td>
+        </tr>
+        <tr>
+            <th>状態:</th>
+            <td>{{ res["status"] }}</td>
+        </tr>
+        <tr>
+            <th>備考:</th>
+            <td>{{ res["memo"] }}</td>
+        </tr>
+    </table>
+    <br>
+    <p><a href="{{ url_for('index') }}">削除しない</a></p>
+    <p><a href="{{ url_for('delete', id=id) }}">削除する</a></p>
+</body>
+</html>

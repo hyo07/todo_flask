@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <h1>タスク一覧</h1>
+        <tr>
+            <th>タスク内容</th>
+            <th>期限</th>
+            <th>状態</th>
+            <th>備考</th>
+            <th>削除</th>
+        </tr>
+        {% for row in todo["now_page_data"] %}
+            <tr>
+                <td><a href="{{ url_for('edit', id=row['id']) }}">{{ row["name"] }}</a></td>
+                <td>{{ row["duedate"] }}</td>
+                <td>{{ row["status"] }}</td>
+                <td>{{ row["memo" ] }}</td>
+                <td><a href="{{ url_for('delcheck', id=row['id']) }}">削除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h3><a href="{{ url_for('add') }}">タスクを追加</a></h3>
+
+    <div>
+        {% if todo["previous_page"] %}
+            <a href="/?page={{ todo['previous_page'] }}">< 前へ</a>
+        {% endif %}
+        {{ todo["page"] }}
+        {% if todo ["next_page"] %}
+            <a href="/?page={{ todo['next_page'] }}">次へ ></a>
+        {% endif %}
+    </div>
+</body>
+</html>

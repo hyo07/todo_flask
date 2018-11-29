@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="{% if type == 'add' %}{{ url_for('add')}}{% else %}{{ url_for('update', id=todo['id']) }}{% endif %}">
+        {% if error_list %}
+        <ul>
+            {% for error in error_list %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <p>タスク名<input type="text" name="name" value="{{ todo['name'] }}"></p>
+        <p>期限<input type="text" name="duedate" value="{{ todo['duedate'] }}"></p>
+        <label>状態</label><select name="status">
+            {% if type == 'add' %}
+                <option value="no">未実行</option>
+                <option value="run">実行中</option>
+            {% else %}
+                {% for v in status_list %}
+                    <option value="{{ v }}">{{ en_ja[v] }}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
+        <p>備考<input type="text" name="memo" value="{{ todo['memo'] }}"></p>
+
+        {% if type == 'add' %}
+            <button type="submit">タスクを追加</button>
+        {% else %}
+            <button type="submit">タスクを更新</button>
+        {% endif %}
+    </form>
+</body>
+</html>
