@@ -17,7 +17,7 @@ def get_db_connection():
 
 @app.route("/")
 def index():
-    connection = get_db_connection()
+    connection = get_db_connectio　n()
     cursor = connection.cursor()
     res = cursor.execute("SELECT * FROM todo")
     res_list = res.fetchall()
@@ -26,7 +26,7 @@ def index():
 
     todo = {}
     # ページ数受け取り
-    res_todo = request.args.get("page", 1)
+    res_todo = requestargs.get("page", 1)
     todo["page"] = int(res_todo)
     # 前のページと次のページの生成
     if todo["page"] > 1:
